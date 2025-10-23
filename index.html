@@ -1,11 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>
-            !_My Site_!
-        </title>
-    </head>
-    <body>
-        <h1>This is my GitHub Pages website</h1>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tawfic Abdul-Fatah - Software Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --accent: #000000;
+            --border: #e0e0e0;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2a2a2a;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #ffffff;
+            --border: #404040;
+            --shadow: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 4px var(--shadow);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-secondary);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--accent);
+            background-color: transparent;
+            color: var(--accent);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.8;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero/Header Section with Background */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 4rem 2rem;
+            background-image: url('./images/background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        /* Dark overlay for better text contrast */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        /* Make hero content sit above the overlay */
+        .hero > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .headshot {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .hero .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            transition: opacity 0.3s;
+        }
+
+        .hero .contact-info a:hover {
+            opacity: 0.8;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        section h4 {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Summary Section */
+        .summary p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin-bottom: 1rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-category p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-header {
+            margin-bottom: 1rem;
+        }
+
+        .experience-header h3 {
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-header .company {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .experience-header .date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .experience-item p {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .experience-item p strong {
+            color: var(--text-primary);
+        }
+
+        /* Education Section */
+        .education-item {
+            margin-bottom: 2rem;
+        }
+
+        .education-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .education-link:hover {
+            text-decoration: underline;
+        }
+
+        .education-preview {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--bg-secondary);
+            color: var(--text-secondary);
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="Tawfic_Abdul_Fatah_Resume.pdf" class="btn" download="Tawfic_Abdul_Fatah_Resume.pdf">Download PDF</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero/Header Section with Background -->
+    <header class="hero">
+        <img src="./images/headshot.jpg" alt="Tawfic Abdul-Fatah" class="headshot">
+        <h1>Tawfic Abdul-Fatah</h1>
+        <p class="tagline">Software Developer | Python | Generative AI</p>
+        <div class="contact-info">
+            <a href="mailto:tawficFatah@protonmail.com">✉️ tawficFatah@protonmail.com</a>
+            <a href="mailto:tawficFatah@protonmail.com?subject=Request%20for%20Phone%20Number" title="Phone available upon request">📱 Phone Available Upon Request</a>
+            <a href="https://www.linkedin.com/in/tawficfatah" target="_blank">💼 LinkedIn</a>
+            <a href="https://github.com/tawficfatah" target="_blank">💻 GitHub</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- About/Summary Section -->
+        <section id="about">
+            <h2>About</h2>
+            <div class="summary">
+                <p>
+                    Experienced software developer transitioning to Python with expertise in generative AI and prompt engineering. 
+                    Background spans full-stack web development, database design, and teaching computer science. 
+                    Proven track record working with diverse tech stacks from legacy systems to modern frameworks.
+                </p>
+                <p>
+                    In an ancient life, I worked as a C programmer using Unix-based middleware, then became a Java programmer 
+                    focusing on web applications. I decided to go back to school to study Computer Science and Mathematics—this 
+                    was before MOOCs. During my school years I worked as a TA, primarily helping with first and second year 
+                    computer science courses. I am currently transitioning to my favorite language, Python, and getting acquainted 
+                    with Prompt Engineering, GenAI, and AI programming in general.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <p>Python, SQL, JavaScript, Bash, C | <span style="color: var(--text-secondary); font-size: 0.9em;">Past: C#, Java</span></p>
+                </div>
+                <div class="skill-category">
+                    <h3>Python Libraries</h3>
+                    <p>Pandas, NumPy, Matplotlib, Plotly, Dash, scikit-learn</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks</h3>
+                    <p>ASP.NET Core, Entity Framework, Vue.js, J2EE</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <p>MS SQL Server, PostgreSQL, Oracle, DB2, SQLite</p>
+                </div>
+                <div class="skill-category">
+                    <h3>AI & Automation</h3>
+                    <p>ChatGPT, Claude, Claude Code, Prompt Engineering, Generative AI, AI Agents</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <p>Git/GitHub, Jira, Confluence, Docker, Linux, Jupyter Notebooks</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Software Developer</h3>
+                    <p class="company">Labgo | Montreal, Quebec, Canada</p>
+                    <p class="date">September 2021 - August 2022</p>
+                </div>
+                <p>Labgo is an initiative led by John Abbott College, Cégep Gérald-Godin and Collège de Bois-de-Boulogne, 
+                connecting IT professionals with real-world projects. Worked on a full-stack web application for IroSoft 
+                using Vue.js, .NET Core, and MS SQL Server.</p>
+                <ul>
+                    <li>Designed normalized database schema (3NF) for the application</li>
+                    <li>Developed RESTful API controllers using ASP.NET Core and C#</li>
+                    <li>Implemented data access layer using Entity Framework Core</li>
+                    <li>Created comprehensive backend service tests using xUnit</li>
+                    <li>Developed frontend automated tests using Selenium WebDriver with Python</li>
+                    <li>Managed code repository using Git/GitHub and coordinated sprints via Jira</li>
+                </ul>
+                <p><strong>Technologies:</strong> .NET Core 3.1, ASP.NET Core, Entity Framework Core, C#, MS SQL Server 2019, 
+                Vue.js 2.1, JavaScript, Git/GitHub, Selenium, Python, Jira, Confluence</p>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Undergraduate Teaching Assistant</h3>
+                    <p class="company">Carleton University | Ottawa, Canada</p>
+                    <p class="date">September 2013 - December 2019</p>
+                </div>
+                <p>Supported computer science courses spanning introductory to advanced topics while pursuing degree.</p>
+                <p><strong>Courses:</strong> Introduction to Computer Science I & II, Business Applications Development, 
+                Introduction to Systems Programming, Abstract Data Types and Algorithms, Introduction to Computational Thinking</p>
+                <ul>
+                    <li>Conducted lab sessions and tutorials</li>
+                    <li>Graded programming assignments and midterms</li>
+                    <li>Held office hours for student consultation</li>
+                    <li>Taught Python, Java, C, Linux, OOP, OOA, and UML</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Programmer</h3>
+                    <p class="company">Canada Revenue Agency | Ottawa, Ontario, Canada</p>
+                    <p class="date">May 2009 - August 2010</p>
+                </div>
+                <p>Worked with DB2 and WebSphere support groups across two contract periods.</p>
+                <ul>
+                    <li>Troubleshot database and application server issues</li>
+                    <li>Automated routine tasks using scripting</li>
+                    <li>Evaluated and assessed new technologies for adoption</li>
+                    <li>Assisted with testing new installations and upgrades</li>
+                </ul>
+                <p><strong>Technologies:</strong> DB2, SQL, Java, JDBC, J2EE, PureXML, z/OS, Linux/Bash</p>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Software Developer</h3>
+                    <p class="company">Digital Oilfield | Calgary, Alberta, Canada</p>
+                    <p class="date">October 2002 - August 2004</p>
+                </div>
+                <p>Developed web application for online invoicing tailored to the Oil and Gas industry.</p>
+                <ul>
+                    <li>Developed JSPs and Servlets using Java and J2EE</li>
+                    <li>Implemented business logic and database interactions</li>
+                    <li>Worked with Oracle database and Weblogic application server</li>
+                </ul>
+                <p><strong>Technologies:</strong> Java, J2EE, SQL, Oracle, Weblogic</p>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education & Certifications</h2>
+            
+            <div class="education-item">
+                <h3>Bachelor of Computer Science (High Distinction)</h3>
+                <h4>Carleton University | December 2018</h4>
+                <p class="education-preview">Minor in Mathematics</p>
+            </div>
+
+            <div class="education-item">
+                <h3>AEC Analyste Programmeur</h3>
+                <h4>Collège de Bois-de-Boulogne | October 2021 - August 2022</h4>
+                <p class="education-preview">Programmer Analyst</p>
+            </div>
+
+            <div class="education-item">
+                <h3>DataCamp Professional Certifications</h3>
+                <p class="education-preview">
+                    10 tracks completed covering Python development, data analysis, data engineering, and visualization
+                </p>
+                <p class="education-preview">
+                    <strong>Key Skills:</strong> Python Programming, Data Analysis, SQL, Data Engineering, Plotly & Dash, Git & GitHub
+                </p>
+                <a href="datacamp.html" class="education-link">View Detailed Certifications →</a>
+            </div>
+
+            <div class="education-item">
+                <h3>Coursera Professional Certifications</h3>
+                <p class="education-preview">
+                    4 specializations in generative AI, prompt engineering, and AI automation
+                </p>
+                <p class="education-preview">
+                    <strong>Key Skills:</strong> Generative AI, Prompt Engineering, ChatGPT, AI Automation, Claude Code
+                </p>
+                <a href="coursera.html" class="education-link">View Detailed Certifications →</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Tawfic Abdul-Fatah. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            const icon = document.querySelector('.theme-icon');
+            
+            html.setAttribute('data-theme', newTheme);
+            icon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            
+            // Save preference
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const icon = document.querySelector('.theme-icon');
+            
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            icon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
 </html>

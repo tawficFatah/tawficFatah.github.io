@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coursera Certifications - Tawfic AbdulFattah</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --accent: #000000;
+            --border: #e0e0e0;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2a2a2a;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #ffffff;
+            --border: #404040;
+            --shadow: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 4px var(--shadow);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link:hover {
+            color: var(--text-secondary);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Header */
+        .page-header {
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .overview {
+            background-color: var(--bg-secondary);
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .overview p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .overview p:last-child {
+            margin-bottom: 0;
+        }
+
+        .competencies {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Specialization Cards */
+        .specializations {
+            margin-bottom: 3rem;
+        }
+
+        .specializations h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .spec-card {
+            background-color: var(--bg-secondary);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .spec-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .spec-card h3 a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .spec-card h3 a:hover {
+            color: var(--text-secondary);
+        }
+
+        .spec-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .spec-card p strong {
+            color: var(--text-primary);
+        }
+
+        /* Advanced Coursework */
+        .coursework {
+            margin-bottom: 3rem;
+        }
+
+        .coursework h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .course-item {
+            background-color: var(--bg-secondary);
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .course-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .course-item h3 a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .course-item h3 a:hover {
+            color: var(--text-secondary);
+        }
+
+        .course-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .course-item p strong {
+            color: var(--text-primary);
+        }
+
+        /* Technical Capabilities */
+        .tech-capabilities {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 4px;
+            margin-top: 3rem;
+        }
+
+        .tech-capabilities h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tech-category h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .tech-category p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Footer Note */
+        .footer-note {
+            text-align: center;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .specializations h2,
+            .coursework h2,
+            .tech-capabilities h2 {
+                font-size: 1.5rem;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="back-link">
+                ← Back to Resume
+            </a>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Coursera Professional Certifications</h1>
+            
+            <div class="overview">
+                <p>
+                    Completed 4 specializations and advanced coursework focusing on generative AI, prompt engineering, 
+                    and AI-powered automation. These certifications demonstrate expertise in leveraging cutting-edge AI 
+                    tools to enhance productivity, automate workflows, and build intelligent applications.
+                </p>
+                <p class="competencies">
+                    <strong>Core Competencies:</strong> Generative AI • Prompt Engineering • AI Automation • ChatGPT • 
+                    AI Assistants • Software Engineering with AI Agents
+                </p>
+            </div>
+        </div>
+
+        <!-- Specializations -->
+        <div class="specializations">
+            <h2>Completed Specializations</h2>
+
+            <div class="spec-card">
+                <h3><a href="https://www.coursera.org/account/accomplishments/specialization/STO0F8A1JCQ6" target="_blank">ChatGPT: Master Free AI Tools to Supercharge Productivity</a></h3>
+                <p><strong>Skills:</strong> ChatGPT optimization, AI-powered workflows, productivity enhancement, content generation, research automation, task delegation to AI</p>
+            </div>
+
+            <div class="spec-card">
+                <h3><a href="https://www.coursera.org/account/accomplishments/specialization/TLUELRAJ8N9D" target="_blank">Generative AI Automation</a></h3>
+                <p><strong>Skills:</strong> Workflow automation with AI, API integration, automated content creation, process optimization, AI pipeline development</p>
+            </div>
+
+            <div class="spec-card">
+                <h3><a href="https://www.coursera.org/account/accomplishments/specialization/Y3VAXEW7BRHM" target="_blank">Prompt Engineering</a></h3>
+                <p><strong>Skills:</strong> Advanced prompting techniques, chain-of-thought reasoning, few-shot learning, prompt optimization, context management, instruction design</p>
+            </div>
+
+            <div class="spec-card">
+                <h3><a href="https://www.coursera.org/account/accomplishments/specialization/85DSS6V2VTS4" target="_blank">Generative AI Assistants</a></h3>
+                <p><strong>Skills:</strong> Building AI assistants, conversational AI, function calling, agent design, custom GPT development, assistant API integration</p>
+            </div>
+        </div>
+
+        <!-- Advanced Coursework -->
+        <div class="coursework">
+            <h2>Advanced Coursework</h2>
+
+            <div class="course-item">
+                <h3><a href="https://www.coursera.org/account/accomplishments/verify/M2AS616ESGX7" target="_blank">Claude Code: Software Engineering with Generative AI Agents</a></h3>
+                <p><strong>Skills:</strong> AI-assisted software development, agentic coding workflows, Claude Code CLI, autonomous code generation, AI pair programming, debugging with AI agents</p>
+            </div>
+        </div>
+
+        <!-- Technical Capabilities -->
+        <div class="tech-capabilities">
+            <h2>Technical Capabilities</h2>
+            <div class="tech-grid">
+                <div class="tech-category">
+                    <h3>AI Platforms</h3>
+                    <p>ChatGPT, Claude, Claude Code</p>
+                </div>
+                <div class="tech-category">
+                    <h3>Applications</h3>
+                    <p>AI automation, prompt engineering, workflow optimization, AI-assisted development</p>
+                </div>
+                <div class="tech-category">
+                    <h3>Methodologies</h3>
+                    <p>Prompt design patterns, chain-of-thought prompting, AI agent orchestration, iterative refinement</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Note -->
+        <div class="footer-note">
+            <p>All certifications include hands-on projects demonstrating practical application of generative AI in real-world scenarios.</p>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            const icon = document.querySelector('.theme-icon');
+            
+            html.setAttribute('data-theme', newTheme);
+            icon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            
+            // Save preference
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const icon = document.querySelector('.theme-icon');
+            
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            icon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        });
+    </script>
+</body>
+</html>

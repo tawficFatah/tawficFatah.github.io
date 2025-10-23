@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataCamp Certifications - Tawfic AbdulFattah</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --accent: #000000;
+            --border: #e0e0e0;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2a2a2a;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #ffffff;
+            --border: #404040;
+            --shadow: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 4px var(--shadow);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link:hover {
+            color: var(--text-secondary);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Header */
+        .page-header {
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .overview {
+            background-color: var(--bg-secondary);
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .overview p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .overview p:last-child {
+            margin-bottom: 0;
+        }
+
+        .competencies {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Track Sections */
+        .track-section {
+            margin-bottom: 3rem;
+        }
+
+        .track-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .track-list {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .track-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .track-list a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .track-list a:hover {
+            text-decoration: underline;
+        }
+
+        .skills-list {
+            color: var(--text-secondary);
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: var(--bg-secondary);
+            border-radius: 4px;
+        }
+
+        .skills-list p {
+            margin-bottom: 0;
+        }
+
+        .skills-list strong {
+            color: var(--text-primary);
+        }
+
+        /* Technical Stack */
+        .tech-stack {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 4px;
+            margin-top: 3rem;
+        }
+
+        .tech-stack h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tech-category h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .tech-category p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Footer Note */
+        .footer-note {
+            text-align: center;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .track-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="back-link">
+                ← Back to Resume
+            </a>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>DataCamp Professional Certifications</h1>
+            
+            <div class="overview">
+                <p>
+                    Completed 10 professional tracks covering Python development, data analysis, data engineering, 
+                    and visualization. These certifications demonstrate proficiency in building data-driven applications, 
+                    analyzing complex datasets, and creating interactive visualizations.
+                </p>
+                <p class="competencies">
+                    <strong>Core Competencies:</strong> Python Programming • Data Analysis • SQL • Data Engineering • 
+                    Data Visualization • Git & GitHub • ETL Pipelines • Plotly & Dash
+                </p>
+            </div>
+        </div>
+
+        <!-- Python Development Tracks -->
+        <div class="track-section">
+            <h2>Python Development</h2>
+            <ul class="track-list">
+                <li><a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/19f5daed1bcb2eaeed7e5b1a0e9768ff32ab187d" target="_blank">Python Developer</a></li>
+                <li><a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/32f63a697ef7288d4de75411451f34309c75bde0" target="_blank">Associate Python Developer</a></li>
+                <li><a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/fdb9c29a62f61154a7d48815b0651acd6d35f9d6" target="_blank">Python Programming Fundamentals</a></li>
+                <li><a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/ddf5ec20df4675f11d1650d1624c0cbfe4756e36" target="_blank">Python Programming Toolbox</a></li>
+                <li><a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/41dab363a854dbcfb7ade736d10089258c97fdb2" target="_blank">Python Data Fundamentals</a></li>
+            </ul>
+            <div class="skills-list">
+                <p><strong>Skills:</strong> Object-oriented programming, functional programming, list comprehensions, lambda functions, iterators, generators, error handling, file I/O, working with APIs</p>
+            </div>
+        </div>
+
+        <!-- Data Analysis Tracks -->
+        <div class="track-section">
+            <h2>Data Analysis</h2>
+            <ul class="track-list">
+                <li><a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/27e52970196e01720b3571de4aa1347712a7c83c" target="_blank">Data Analyst</a></li>
+                <li><a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/c3b96df1b8d468058a8b08575e9662b0c801dd2e" target="_blank">Associate Data Analyst</a></li>
+            </ul>
+            <div class="skills-list">
+                <p><strong>Skills:</strong> SQL queries, pandas DataFrames, statistical analysis, data cleaning, exploratory data analysis, data manipulation, joining datasets, aggregations</p>
+            </div>
+        </div>
+
+        <!-- Data Engineering Track -->
+        <div class="track-section">
+            <h2>Data Engineering</h2>
+            <ul class="track-list">
+                <li><a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/fc78df85750254ebeda11bd5615f9cce1696c94d" target="_blank">Associate Data Engineer</a></li>
+            </ul>
+            <div class="skills-list">
+                <p><strong>Skills:</strong> ETL pipelines, data warehousing, database design, data modeling, workflow orchestration, data quality testing</p>
+            </div>
+        </div>
+
+        <!-- Data Visualization Track -->
+        <div class="track-section">
+            <h2>Data Visualization</h2>
+            <ul class="track-list">
+                <li><a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/e4068e90b3aca070232bf15f4aec381f7bf30a76" target="_blank">Data Visualization with Plotly and Dash</a></li>
+            </ul>
+            <div class="skills-list">
+                <p><strong>Skills:</strong> Interactive dashboards, Plotly graphs, Dash applications, callback functions, responsive web visualizations</p>
+            </div>
+        </div>
+
+        <!-- Version Control Track -->
+        <div class="track-section">
+            <h2>Version Control</h2>
+            <ul class="track-list">
+                <li><a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/021479f38597feff14e23e7848f16619e175ee23" target="_blank">GitHub Foundations</a></li>
+            </ul>
+            <div class="skills-list">
+                <p><strong>Skills:</strong> Git workflows, branching strategies, pull requests, code reviews, collaborative development, repository management</p>
+            </div>
+        </div>
+
+        <!-- Technical Stack -->
+        <div class="tech-stack">
+            <h2>Technical Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-category">
+                    <h3>Languages</h3>
+                    <p>Python, SQL</p>
+                </div>
+                <div class="tech-category">
+                    <h3>Libraries & Frameworks</h3>
+                    <p>pandas, NumPy, Matplotlib, Plotly, Dash, scikit-learn</p>
+                </div>
+                <div class="tech-category">
+                    <h3>Tools</h3>
+                    <p>Git, GitHub, Jupyter Notebooks, command line</p>
+                </div>
+                <div class="tech-category">
+                    <h3>Databases</h3>
+                    <p>PostgreSQL, SQLite</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Note -->
+        <div class="footer-note">
+            <p>All certifications include hands-on projects and assessments demonstrating practical application of skills.</p>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            const icon = document.querySelector('.theme-icon');
+            
+            html.setAttribute('data-theme', newTheme);
+            icon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            
+            // Save preference
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const icon = document.querySelector('.theme-icon');
+            
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            icon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        });
+    </script>
+</body>
+</html>
